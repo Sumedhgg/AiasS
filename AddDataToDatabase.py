@@ -13,7 +13,7 @@ data = {
     "ENG19CT0016":
         {
             "name": "Kevin Henry",
-            "major": "Computer Science and Technology",
+            "major": "CST",
             "starting_year": 2019,
             "total_attendance": 93,
             "standing": "A",
@@ -23,7 +23,7 @@ data = {
     "ENG19CT0041":
         {
             "name": "Suchitra Swain",
-            "major": "Computer Science and Technology",
+            "major": "CST",
             "starting_year": 2019,
             "total_attendance": 93,
             "standing": "A",
@@ -34,7 +34,7 @@ data = {
     "ENG19CT0042":
         {
             "name": "Sumedh Hagaldivte",
-            "major": "Computer Science and Technology",
+            "major": "CST",
             "starting_year": 2019,
             "total_attendance": 93,
             "standing": "A",
