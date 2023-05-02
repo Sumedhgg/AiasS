@@ -2,6 +2,10 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
 
+from datetime import datetime
+
+now = datetime.now()
+
 cred = credentials.Certificate("serviceAccountKey.json")
 firebase_admin.initialize_app(cred, {
     'databaseURL': "https://aifaceattendance-263ed-default-rtdb.firebaseio.com/"
@@ -18,7 +22,7 @@ data = {
             "total_attendance": 93,
             "standing": "A",
             "year": 4,
-            "last_attendance_time": "2022-12-11 00:54:34"
+            "last_attendance_time": now.strftime("%Y-%m-%d %H:%M:%S")
         },
     "ENG19CT0041":
         {
@@ -28,7 +32,7 @@ data = {
             "total_attendance": 93,
             "standing": "A",
             "year": 4,
-            "last_attendance_time": "2022-12-11 00:54:34"
+            "last_attendance_time": now.strftime("%Y-%m-%d %H:%M:%S")
         },
 
     "ENG19CT0042":
@@ -39,10 +43,11 @@ data = {
             "total_attendance": 93,
             "standing": "A",
             "year": 4,
-            "last_attendance_time": "2022-12-11 00:54:34"
+            "last_attendance_time": now.strftime("%Y-%m-%d %H:%M:%S")
         }
 
 }
 
 for key, value in data.items():
     ref.child(key).set(value)
+
