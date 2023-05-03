@@ -61,6 +61,7 @@ while True:
     label = test(image = img,
                              model_dir='C:/Users/sumed/PycharmProjects/FaceRecognition/Silent-Face-Anti-Spoofing-master/resources/anti_spoof_models',
                              device_id=0)
+    print("scotttttttttttt",label)
     if faceCurFrame and label==1:
 
         for encodeFace, faceLoc in zip(encodeCurFrame, faceCurFrame):
