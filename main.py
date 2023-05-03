@@ -68,7 +68,7 @@ while True:
             faceDis = face_recognition.face_distance(encodeListKnown, encodeFace)
             # print("matches", matches)
             print("faceDis", faceDis)
-            print("bitchhhhhhhh",np.amin(faceDis))
+            print("Match percentageeeee",np.amin(faceDis))
 
             if np.amin(faceDis) > 0.4:
                 continue
