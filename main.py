@@ -63,10 +63,14 @@ while True:
             matches = face_recognition.compare_faces(encodeListKnown, encodeFace)
             faceDis = face_recognition.face_distance(encodeListKnown, encodeFace)
             # print("matches", matches)
-            # print("faceDis", faceDis)
+            print("faceDis", faceDis)
+            print("bitchhhhhhhh",np.amin(faceDis))
+
+            if np.amin(faceDis) > 0.4:
+                continue
 
             matchIndex = np.argmin(faceDis)
-            # print("Match Index", matchIndex)
+            print("Match Index", matchIndex)
 
             if matches[matchIndex]:
                 # print("Known Face Detected")
@@ -83,6 +87,11 @@ while True:
                     cv2.waitKey(1)
                     counter = 1
                     modeType = 1
+            else:
+                cv2.rectangle(img, (x1, y1), (x2, y2), (0, 0, 255), 2)
+                cv2.rectangle(img, (x1, y2-35), (x2, y2), (0, 0, 255), 2)
+                cv2.putText(img, "Face not detected", (x1+6, y2-6), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255), 2)
+
         if counter != 0:
             if counter == 1:
                 studentInfo = db.reference(f'Students/{id}').get()
@@ -96,7 +105,7 @@ while True:
                                                    "%Y-%m-%d %H:%M:%S")
                 secondsElapsed = (datetime.now() - datetimeObject).total_seconds()
                 print(secondsElapsed)
-                if secondsElapsed > 30:
+                if secondsElapsed > 120:
                     ref = db.reference(f'Students/{id}')
                     studentInfo['total_attendance'] += 1
                     ref.child('total_attendance').set(studentInfo['total_attendance'])
@@ -137,8 +146,6 @@ while True:
                     imgBackground[175:175 + 216, 909:909 + 216] = imgStudent
 
             counter += 1
-
-
 
             if counter >= 20:
                 counter = 0
