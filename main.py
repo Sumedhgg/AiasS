@@ -58,7 +58,7 @@ while True:
 
     imgBackground[162:162 + 480, 55:55 + 640] = img
     imgBackground[44:44 + 633, 808:808 + 414] = imgModeList[modeType]
-    label = test(image = imgS,
+    label = test(image = img,
                              model_dir='C:/Users/sumed/PycharmProjects/FaceRecognition/Silent-Face-Anti-Spoofing-master/resources/anti_spoof_models',
                              device_id=0)
     if faceCurFrame and label==1:
