@@ -10,6 +10,8 @@ from firebase_admin import db
 from firebase_admin import storage
 from datetime import datetime
 
+from test import test
+
 cred = credentials.Certificate("serviceAccountKey.json")
 firebase_admin.initialize_app(cred, {
     'databaseURL': "https://aifaceattendance-263ed-default-rtdb.firebaseio.com/",
@@ -56,8 +58,10 @@ while True:
 
     imgBackground[162:162 + 480, 55:55 + 640] = img
     imgBackground[44:44 + 633, 808:808 + 414] = imgModeList[modeType]
-
-    if faceCurFrame:
+    label = test(image = imgS,
+                             model_dir='C:/Users/sumed/PycharmProjects/FaceRecognition/Silent-Face-Anti-Spoofing-master/resources/anti_spoof_models',
+                             device_id=0)
+    if faceCurFrame and label==1:
 
         for encodeFace, faceLoc in zip(encodeCurFrame, faceCurFrame):
             matches = face_recognition.compare_faces(encodeListKnown, encodeFace)
